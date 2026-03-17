@@ -1,0 +1,22 @@
+{
+  "name": "reelgen",
+  "private": true,
+  "packageManager": "pnpm@9.12.3",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:worker": "pnpm --filter worker dev",
+    "dev": "concurrently \"pnpm dev:web\" \"pnpm dev:worker\"",
+    "db:seed": "tsx packages/db/seed.ts",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "pnpm": "^9.12.3",
+    "tsx": "^4.16.2",
+    "turbo": "^2.0.12",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  }
+}

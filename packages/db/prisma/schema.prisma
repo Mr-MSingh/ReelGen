@@ -1,0 +1,401 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum UserStatus {
+  active
+  invited
+  disabled
+}
+
+enum ConnectedAccountStatus {
+  active
+  expired
+  revoked
+  error
+}
+
+enum VideoProjectStatus {
+  draft
+  queued
+  generating_script
+  generating_storyboard
+  generating_assets
+  generating_voice
+  rendering
+  ready
+  scheduled
+  publishing
+  published
+  failed
+}
+
+enum PublishScheduleStatus {
+  pending
+  queued
+  publishing
+  published
+  failed
+  cancelled
+}
+
+enum CreditLedgerType {
+  monthly
+  purchased
+  bonus
+  adjustment
+}
+
+enum AssetType {
+  image
+  audio
+  subtitle
+  video
+  thumbnail
+  transcript
+  music
+}
+
+enum AssetSource {
+  uploaded
+  generated
+  system
+}
+
+enum ConnectedPlatform {
+  youtube
+  instagram
+  tiktok
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  name      String?
+  image     String?
+  emailVerified DateTime?
+  status    UserStatus @default(active)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workspaces Workspace[]
+  auditLogs  AuditLog[] @relation("AuditLogActor")
+  accounts   Account[]
+  sessions   Session[]
+}
+
+model Workspace {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  ownerUserId       String   @db.ObjectId
+  name              String
+  timezone          String
+  defaultLanguage   String
+  defaultBrandTheme String?
+  planId            String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  owner             User     @relation(fields: [ownerUserId], references: [id])
+  subscription      Subscription?
+  credits           CreditLedger[]
+  connectedAccounts ConnectedAccount[]
+  series            Series[]
+  videos            VideoProject[]
+  assets            Asset[]
+  generationJobs    GenerationJob[]
+  publishSchedules  PublishSchedule[]
+  auditLogs         AuditLog[]
+}
+
+model Subscription {
+  id                     String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId            String   @unique @db.ObjectId
+  stripeCustomerId       String?
+  stripeSubscriptionId   String?
+  status                 String
+  planCode               String
+  renewalAt              DateTime?
+  monthlyVideoLimit      Int
+  monthlyCreditsIncluded Int
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+}
+
+model CreditLedger {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId   String   @db.ObjectId
+  type          CreditLedgerType
+  delta         Int
+  balanceAfter  Int
+  reason        String
+  referenceType String?
+  referenceId   String?
+  createdAt     DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+}
+
+model ConnectedAccount {
+  id                       String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId              String   @db.ObjectId
+  platform                 ConnectedPlatform
+  platformAccountId        String
+  channelName              String?
+  scopes                   String[]
+  encryptedTokenRef        String
+  encryptedRefreshTokenRef String
+  tokenExpiresAt           DateTime?
+  status                   ConnectedAccountStatus @default(active)
+  lastValidatedAt          DateTime?
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+  publishSchedules PublishSchedule[]
+}
+
+model Series {
+  id                     String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId            String   @db.ObjectId
+  name                   String
+  niche                  String
+  formatType             String
+  targetDurationSec      Int
+  tone                   String
+  artStyle               String
+  voiceStyle             String
+  musicMode              String
+  postingCadence         String
+  defaultCaptionTemplate String?
+  defaultHashtags         String[]
+  defaultPlatforms        ConnectedPlatform[]
+  status                 String
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+  videos    VideoProject[]
+}
+
+model VideoProject {
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId           String   @db.ObjectId
+  seriesId              String   @db.ObjectId
+  title                 String
+  topicPrompt           String?
+  language              String
+  status                VideoProjectStatus @default(draft)
+  reviewState           String?
+  generationVersion     Int
+  currentScriptId       String?  @db.ObjectId
+  currentStoryboardId   String?  @db.ObjectId
+  currentRenderSpecId   String?  @db.ObjectId
+  outputAssetId         String?  @unique @db.ObjectId
+  thumbnailAssetId      String?  @unique @db.ObjectId
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+  series    Series    @relation(fields: [seriesId], references: [id])
+  scripts   ScriptVersion[]
+  storyboards StoryboardVersion[]
+  renderSpecs RenderSpec[]
+  outputAsset Asset? @relation("VideoOutputAsset", fields: [outputAssetId], references: [id])
+  thumbnailAsset Asset? @relation("VideoThumbnailAsset", fields: [thumbnailAssetId], references: [id])
+  publishSchedules PublishSchedule[]
+  generationJobs GenerationJob[]
+}
+
+model ScriptVersion {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  videoProjectId String   @db.ObjectId
+  rawPrompt     String
+  title         String
+  hook          String
+  body          String
+  cta           String
+  caption       String
+  hashtags      String[]
+  createdAt     DateTime @default(now())
+
+  videoProject VideoProject @relation(fields: [videoProjectId], references: [id])
+}
+
+model StoryboardVersion {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  videoProjectId  String   @db.ObjectId
+  scenes          Json
+  totalDurationSec Int
+  createdAt       DateTime @default(now())
+
+  videoProject VideoProject @relation(fields: [videoProjectId], references: [id])
+}
+
+model RenderSpec {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  videoProjectId    String   @db.ObjectId
+  width             Int
+  height            Int
+  fps               Int
+  backgroundMusicAssetId String? @unique @db.ObjectId
+  voiceTrackAssetId String? @unique @db.ObjectId
+  subtitleAssetId   String? @unique @db.ObjectId
+  scenes            Json
+  createdAt         DateTime @default(now())
+
+  videoProject VideoProject @relation(fields: [videoProjectId], references: [id])
+  backgroundMusic Asset? @relation("RenderBackgroundMusic", fields: [backgroundMusicAssetId], references: [id])
+  voiceTrack       Asset? @relation("RenderVoiceTrack", fields: [voiceTrackAssetId], references: [id])
+  subtitle         Asset? @relation("RenderSubtitle", fields: [subtitleAssetId], references: [id])
+}
+
+model Asset {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId   String   @db.ObjectId
+  ownerType     String
+  ownerId       String
+  type          AssetType
+  source        AssetSource
+  storageKey    String
+  mimeType      String
+  width         Int?
+  height        Int?
+  durationMs    Int?
+  sizeBytes     Int
+  metadata      Json?
+  retentionUntil DateTime?
+  createdAt     DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+  outputForVideo VideoProject? @relation("VideoOutputAsset")
+  thumbnailForVideo VideoProject? @relation("VideoThumbnailAsset")
+  renderBackgroundFor RenderSpec? @relation("RenderBackgroundMusic")
+  renderVoiceFor RenderSpec? @relation("RenderVoiceTrack")
+  renderSubtitleFor RenderSpec? @relation("RenderSubtitle")
+}
+
+model GenerationJob {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId   String   @db.ObjectId
+  videoProjectId String   @db.ObjectId
+  jobType       String
+  state         String
+  provider      String?
+  step          String?
+  attempts      Int
+  errorCode     String?
+  errorMessage  String?
+  inputPayload  Json
+  outputPayload Json?
+  startedAt     DateTime?
+  completedAt   DateTime?
+  createdAt     DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+  videoProject VideoProject @relation(fields: [videoProjectId], references: [id])
+}
+
+model PublishSchedule {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId        String   @db.ObjectId
+  videoProjectId     String   @db.ObjectId
+  platform           ConnectedPlatform
+  connectedAccountId String   @db.ObjectId
+  scheduledAt        DateTime
+  timezone           String
+  captionOverride    String?
+  hashtagsOverride   String[]
+  status             PublishScheduleStatus @default(pending)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+  videoProject VideoProject @relation(fields: [videoProjectId], references: [id])
+  connectedAccount ConnectedAccount @relation(fields: [connectedAccountId], references: [id])
+  attempts PublishAttempt[]
+}
+
+model PublishAttempt {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  publishScheduleId String   @db.ObjectId
+  platform         ConnectedPlatform
+  requestPayload   Json
+  responsePayload  Json?
+  remotePostId     String?
+  postUrl          String?
+  status           String
+  error            String?
+  attemptedAt      DateTime @default(now())
+
+  schedule PublishSchedule @relation(fields: [publishScheduleId], references: [id])
+}
+
+model AuditLog {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId String  @db.ObjectId
+  actorUserId String? @db.ObjectId
+  eventType  String
+  entityType String
+  entityId   String
+  payload    Json
+  createdAt  DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+  actor User? @relation("AuditLogActor", fields: [actorUserId], references: [id])
+}
+
+model IdempotencyKey {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  workspaceId String   @db.ObjectId
+  key         String
+  scope       String
+  createdAt   DateTime @default(now())
+
+  @@unique([workspaceId, scope, key])
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
