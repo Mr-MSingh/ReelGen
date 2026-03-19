@@ -64,11 +64,140 @@
   --landing-petal: linear-gradient(180deg, #f7d8e0 0%, #d78da6 60%, #8d4961 100%);
 }
 
+[data-theme="dark"] .tree-canopy-shell {
+  background: radial-gradient(circle at 36% 34%, rgba(164, 87, 112, 0.94), rgba(118, 61, 82, 0.9) 52%, rgba(73, 32, 48, 0.9) 100%);
+  box-shadow: inset 0 0 90px rgba(255, 255, 255, 0.04),
+    0 24px 46px rgba(24, 10, 15, 0.28);
+}
+
+[data-theme="dark"] .tree-trunk-shell {
+  background: linear-gradient(180deg, #92766d 0%, #6f564f 48%, #3d2a26 100%);
+}
+
+[data-theme="dark"] .botanical-tree-svg {
+  filter: drop-shadow(0 34px 48px rgba(8, 2, 5, 0.24));
+}
+
+[data-theme="dark"] .background-tree-haze {
+  background: radial-gradient(circle, rgba(120, 62, 83, 0.28), rgba(120, 62, 83, 0.1) 44%, transparent 74%);
+}
+
+[data-theme="dark"] .sakura-aura {
+  background: radial-gradient(circle at 38% 34%, rgba(136, 72, 95, 0.4), rgba(136, 72, 95, 0.12) 54%, transparent 78%);
+}
+
+[data-theme="dark"] .sakura-tree-svg {
+  filter: drop-shadow(0 36px 50px rgba(5, 1, 4, 0.42));
+  opacity: 0.78;
+}
+
+[data-theme="dark"] .sakura-volume-node {
+  box-shadow: 0 16px 36px rgba(50, 22, 36, 0.32);
+  background: radial-gradient(circle at 34% 30%, rgba(224, 157, 185, 0.56), rgba(167, 92, 124, 0.44) 54%, rgba(93, 42, 66, 0.36) 100%);
+}
+
+[data-theme="dark"] .sakura-volume-node.is-mid {
+  background: radial-gradient(circle at 34% 30%, rgba(215, 144, 173, 0.5), rgba(156, 84, 115, 0.42) 54%, rgba(85, 38, 60, 0.34) 100%);
+}
+
+[data-theme="dark"] .sakura-volume-node.is-deep {
+  background: radial-gradient(circle at 34% 30%, rgba(192, 126, 153, 0.46), rgba(130, 66, 95, 0.42) 54%, rgba(67, 29, 49, 0.36) 100%);
+}
+
+[data-theme="dark"] .sakura-ground-shadow {
+  fill: rgba(8, 4, 6, 0.4);
+}
+
+[data-theme="dark"] .sakura-parallax-lines {
+  opacity: 0.2;
+}
+
+[data-theme="dark"] .sakura-clay-aura {
+  background: radial-gradient(circle at 40% 34%, rgba(120, 62, 84, 0.42), rgba(120, 62, 84, 0.16) 52%, transparent 80%);
+}
+
+[data-theme="dark"] .sakura-clay-light {
+  background: radial-gradient(circle, rgba(203, 119, 151, 0.2), rgba(203, 119, 151, 0.06) 52%, transparent 78%);
+}
+
+[data-theme="dark"] .sakura-clay-ground {
+  background: radial-gradient(circle, rgba(10, 5, 8, 0.42), rgba(10, 5, 8, 0.12) 58%, transparent 76%);
+}
+
+[data-theme="dark"] .sakura-clay-canopy-shadow {
+  background: radial-gradient(circle at 50% 50%, rgba(17, 8, 12, 0.36), rgba(17, 8, 12, 0.08) 62%, transparent 82%);
+}
+
+[data-theme="dark"] .sakura-clay-trunk,
+[data-theme="dark"] .sakura-clay-root,
+[data-theme="dark"] .sakura-clay-branch {
+  box-shadow: 0 18px 36px rgba(6, 3, 4, 0.34);
+}
+
+[data-theme="dark"] .sakura-clay-trunk {
+  background: linear-gradient(92deg, #241817 0%, #5b433d 26%, #9a786c 52%, #664840 74%, #251918 100%);
+}
+
+[data-theme="dark"] .sakura-clay-pod {
+  box-shadow: inset 0 8px 14px rgba(255, 232, 239, 0.08),
+    inset 0 -18px 24px rgba(56, 22, 33, 0.24),
+    0 18px 34px rgba(24, 9, 15, 0.22);
+}
+
+[data-theme="dark"] .sakura-clay-pod.tone-light {
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 236, 242, 0.62) 0 12%, transparent 13%),
+    radial-gradient(circle at 66% 34%, rgba(253, 221, 232, 0.56) 0 12%, transparent 14%),
+    radial-gradient(circle at 50% 70%, rgba(209, 133, 160, 0.42) 0 18%, transparent 20%),
+    linear-gradient(135deg, rgba(240, 178, 198, 0.68) 0%, rgba(198, 112, 140, 0.62) 56%, rgba(105, 52, 76, 0.6) 100%);
+}
+
+[data-theme="dark"] .sakura-clay-pod.tone-mid {
+  background:
+    radial-gradient(circle at 28% 24%, rgba(250, 218, 230, 0.56) 0 12%, transparent 13%),
+    radial-gradient(circle at 68% 32%, rgba(244, 198, 216, 0.48) 0 11%, transparent 13%),
+    radial-gradient(circle at 52% 70%, rgba(188, 106, 135, 0.44) 0 18%, transparent 20%),
+    linear-gradient(135deg, rgba(226, 152, 178, 0.64) 0%, rgba(171, 94, 122, 0.62) 55%, rgba(86, 42, 62, 0.58) 100%);
+}
+
+[data-theme="dark"] .sakura-clay-pod.tone-deep {
+  background:
+    radial-gradient(circle at 28% 22%, rgba(238, 190, 210, 0.5) 0 11%, transparent 12%),
+    radial-gradient(circle at 68% 34%, rgba(226, 164, 190, 0.44) 0 10%, transparent 12%),
+    radial-gradient(circle at 52% 70%, rgba(169, 86, 116, 0.42) 0 18%, transparent 20%),
+    linear-gradient(135deg, rgba(205, 128, 157, 0.6) 0%, rgba(146, 77, 106, 0.58) 56%, rgba(72, 35, 52, 0.56) 100%);
+}
+
+[data-theme="dark"] .sakura-clay-canopy-petal,
+[data-theme="dark"] .sakura-clay-fall-petal {
+  box-shadow: 0 10px 18px rgba(17, 7, 12, 0.26);
+}
+
+[data-theme="dark"] .blossom-aura-a,
+[data-theme="dark"] .blossom-aura-b {
+  background: radial-gradient(circle, rgba(125, 67, 89, 0.3), rgba(125, 67, 89, 0.08) 56%, transparent 78%);
+}
+
+[data-theme="dark"] .blossom-sheet {
+  background:
+    radial-gradient(circle at 14% 22%, rgba(126, 68, 90, 0.12), transparent 22%),
+    radial-gradient(circle at 82% 16%, rgba(126, 68, 90, 0.1), transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 42%);
+}
+
+[data-theme="dark"] .falling-petal {
+  box-shadow: 0 10px 22px rgba(13, 6, 10, 0.24);
+}
+
+[data-theme="dark"] .headline-solid {
+  color: var(--landing-heading);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 * {
@@ -82,7 +211,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: var(--font-sans);
 }
 
 .landing-backdrop {
@@ -147,8 +276,664 @@ body {
   animation: headline-shift 10s linear infinite;
 }
 
+.headline-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.headline-line {
+  font-size: clamp(3.4rem, 7vw, 6.6rem);
+  font-weight: 650;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.headline-solid {
+  color: var(--landing-heading);
+}
+
+.headline-accent {
+  background-image: linear-gradient(135deg, #2a201e 0%, #714a4b 28%, #b56d83 66%, #8f4258 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.headline-accent-soft {
+  background-image: linear-gradient(135deg, #6f4f4d 0%, #9b6272 46%, #cf88a3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .soft-rise {
   animation: soft-rise 1s ease both;
+}
+
+.scene-perspective {
+  perspective: 1800px;
+  transform-style: preserve-3d;
+}
+
+.scene-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 0.7px, transparent 0.8px),
+    radial-gradient(rgba(27, 14, 12, 0.08) 0.7px, transparent 0.8px);
+  background-position: 0 0, 16px 16px;
+  background-size: 34px 34px;
+  mix-blend-mode: soft-light;
+  opacity: 0.32;
+}
+
+.scene-light-cone {
+  background: radial-gradient(circle, rgba(255, 245, 246, 0.72), rgba(252, 206, 218, 0.28) 42%, transparent 72%);
+  filter: blur(22px);
+  animation: stage-glow 9s ease-in-out infinite;
+}
+
+.hero-stage-floor {
+  background: radial-gradient(circle, rgba(113, 77, 70, 0.34), rgba(113, 77, 70, 0.1) 55%, transparent 78%);
+  filter: blur(10px);
+  animation: floor-glimmer 9s ease-in-out infinite;
+}
+
+.blossom-field {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.3), transparent 18%),
+    radial-gradient(circle at 84% 14%, rgba(243, 193, 206, 0.22), transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 34%);
+}
+
+.blossom-aura {
+  border-radius: 999px;
+  filter: blur(34px);
+  background: radial-gradient(circle, rgba(244, 191, 205, 0.34), rgba(244, 191, 205, 0.1) 56%, transparent 78%);
+  animation: aura-sway 11s ease-in-out infinite;
+}
+
+.blossom-aura-b {
+  animation-duration: 14s;
+}
+
+.blossom-sheet {
+  background:
+    radial-gradient(circle at 14% 22%, rgba(246, 209, 219, 0.18), transparent 22%),
+    radial-gradient(circle at 82% 16%, rgba(246, 209, 219, 0.16), transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%);
+}
+
+.blossom-plane {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.falling-petal {
+  display: block;
+  border-radius: 72% 72% 72% 10%;
+  transform-style: preserve-3d;
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 250, 251, 0.98) 0 16%, transparent 17%),
+    linear-gradient(180deg, #fff0f4 0%, #f5c4d3 54%, #dd91a9 100%);
+  box-shadow: 0 10px 20px rgba(176, 100, 124, 0.16);
+}
+
+.falling-petal::before,
+.falling-petal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.falling-petal::before {
+  inset: 10% 16% 42% 12%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0));
+  transform: translateZ(10px);
+}
+
+.falling-petal::after {
+  inset: 52% 12% 10% 44%;
+  background: linear-gradient(180deg, rgba(201, 115, 142, 0.28), rgba(201, 115, 142, 0));
+  transform: translateZ(8px);
+}
+
+.petal-style-1 {
+  width: 18px;
+  height: 11px;
+}
+
+.petal-style-2 {
+  width: 17px;
+  height: 13px;
+}
+
+.petal-style-3 {
+  width: 15px;
+  height: 14px;
+}
+
+.petal-style-4 {
+  width: 12px;
+  height: 16px;
+}
+
+.sakura-clay-lines {
+  background-image:
+    linear-gradient(128deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 46%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(150deg, rgba(243, 188, 203, 0.12) 0%, rgba(243, 188, 203, 0) 72%);
+  mask-image: radial-gradient(circle at 78% 28%, black 0%, transparent 74%);
+  animation: sakura-line-drift 20s linear infinite;
+  opacity: 0.32;
+}
+
+.sakura-clay-layer {
+  perspective: 2200px;
+  transform-style: preserve-3d;
+  opacity: 0.9;
+  will-change: transform;
+}
+
+.sakura-clay-scene {
+  transform-style: preserve-3d;
+}
+
+.sakura-clay-aura {
+  border-radius: 44% 56% 58% 42% / 42% 40% 60% 58%;
+  background: radial-gradient(circle at 36% 34%, rgba(244, 191, 205, 0.44), rgba(244, 191, 205, 0.14) 54%, transparent 82%);
+  filter: blur(34px);
+  animation: sakura-aura-drift 8s ease-in-out infinite;
+}
+
+.sakura-clay-light {
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 240, 244, 0.46), rgba(255, 240, 244, 0.08) 54%, transparent 78%);
+  filter: blur(24px);
+}
+
+.sakura-clay-ground {
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(78, 48, 42, 0.28), rgba(78, 48, 42, 0.08) 58%, transparent 76%);
+  filter: blur(16px);
+  transform: translateZ(-140px);
+}
+
+.sakura-clay-tree {
+  transform-style: preserve-3d;
+  transform-origin: 46% 84%;
+  will-change: transform;
+}
+
+.sakura-clay-canopy-shadow {
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 50%, rgba(88, 49, 62, 0.18), rgba(88, 49, 62, 0.04) 62%, transparent 82%);
+  filter: blur(30px);
+  transform: translateZ(-140px);
+}
+
+.sakura-clay-trunk,
+.sakura-clay-root,
+.sakura-clay-branch {
+  position: absolute;
+  transform-style: preserve-3d;
+  box-shadow: 0 18px 38px rgba(76, 46, 40, 0.18);
+}
+
+.sakura-clay-trunk::before,
+.sakura-clay-root::before,
+.sakura-clay-branch::before,
+.sakura-clay-trunk::after,
+.sakura-clay-root::after,
+.sakura-clay-branch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.sakura-clay-trunk {
+  background: linear-gradient(92deg, #2d1f1d 0%, #6d4e43 28%, #a78374 54%, #6f5045 74%, #2f201d 100%);
+  border-radius: 52% 48% 38% 42% / 10% 10% 16% 14%;
+}
+
+.sakura-clay-trunk::before {
+  inset: 8% 16% 8% 12%;
+  background: linear-gradient(90deg, rgba(255, 241, 229, 0.34), rgba(255, 241, 229, 0) 66%);
+  transform: translateZ(18px);
+  opacity: 0.72;
+}
+
+.sakura-clay-trunk::after {
+  inset: 10% 8% 10% 62%;
+  background: linear-gradient(180deg, rgba(43, 28, 24, 0.52), rgba(43, 28, 24, 0));
+  transform: translateZ(12px);
+  opacity: 0.64;
+}
+
+.sakura-clay-trunk-main {
+  left: 43%;
+  bottom: 12%;
+  width: 12%;
+  height: 50%;
+  transform: translateZ(76px) rotateY(-16deg) rotateZ(1deg);
+}
+
+.sakura-clay-trunk-upper {
+  left: 46%;
+  bottom: 47%;
+  width: 9%;
+  height: 28%;
+  border-radius: 46% 54% 38% 42% / 12% 12% 20% 18%;
+  transform: translateZ(104px) rotateY(8deg) rotateZ(-10deg);
+}
+
+.sakura-clay-root,
+.sakura-clay-branch {
+  border-radius: 999px;
+  transform-origin: 6% 50%;
+  background: linear-gradient(180deg, #a28072 0%, #775549 38%, #452f2a 100%);
+}
+
+.sakura-clay-root::before,
+.sakura-clay-branch::before {
+  inset: 16% 10% 54% 10%;
+  background: linear-gradient(90deg, rgba(255, 241, 229, 0.28), rgba(255, 241, 229, 0));
+  transform: translateZ(10px);
+}
+
+.sakura-clay-root::after,
+.sakura-clay-branch::after {
+  inset: 54% 8% 14% 8%;
+  background: linear-gradient(90deg, rgba(50, 32, 28, 0.34), rgba(50, 32, 28, 0));
+  transform: translateZ(6px);
+}
+
+.sakura-clay-canopy {
+  transform-style: preserve-3d;
+}
+
+.sakura-clay-pod {
+  position: absolute;
+  border-radius: 46% 54% 55% 45% / 48% 42% 58% 52%;
+  transform-style: preserve-3d;
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 248, 250, 0.96) 0 12%, transparent 13%),
+    radial-gradient(circle at 66% 34%, rgba(255, 239, 244, 0.92) 0 12%, transparent 14%),
+    radial-gradient(circle at 50% 70%, rgba(241, 185, 205, 0.88) 0 18%, transparent 20%),
+    linear-gradient(135deg, #ffe9ef 0%, #f5c1d1 42%, #df9ab4 72%, #b96f8b 100%);
+  box-shadow: inset 0 8px 14px rgba(255, 255, 255, 0.22),
+    inset 0 -18px 24px rgba(170, 86, 110, 0.16),
+    0 18px 34px rgba(177, 104, 128, 0.18);
+  animation: blossom-clay-float 8s ease-in-out infinite;
+}
+
+.sakura-clay-pod::before,
+.sakura-clay-pod::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.sakura-clay-pod::before {
+  inset: -6% auto auto 8%;
+  width: 46%;
+  height: 46%;
+  background: linear-gradient(145deg, rgba(255, 251, 252, 0.94), rgba(244, 202, 217, 0.72));
+  box-shadow: inset 0 4px 8px rgba(255, 255, 255, 0.32);
+  transform: translateZ(18px) rotate(-14deg);
+}
+
+.sakura-clay-pod::after {
+  inset: auto 8% 4% auto;
+  width: 42%;
+  height: 42%;
+  background: linear-gradient(145deg, rgba(230, 160, 184, 0.64), rgba(185, 99, 128, 0.34));
+  transform: translateZ(12px);
+  filter: blur(0.3px);
+}
+
+.sakura-clay-pod.tone-light {
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 248, 250, 0.98) 0 12%, transparent 13%),
+    radial-gradient(circle at 66% 34%, rgba(255, 239, 244, 0.94) 0 12%, transparent 14%),
+    radial-gradient(circle at 50% 70%, rgba(244, 194, 211, 0.9) 0 18%, transparent 20%),
+    linear-gradient(135deg, #fff0f4 0%, #f7cfdb 42%, #e5a8bc 72%, #c47e97 100%);
+}
+
+.sakura-clay-pod.tone-mid {
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255, 244, 247, 0.94) 0 12%, transparent 13%),
+    radial-gradient(circle at 68% 32%, rgba(253, 231, 238, 0.9) 0 11%, transparent 13%),
+    radial-gradient(circle at 52% 70%, rgba(237, 174, 196, 0.86) 0 18%, transparent 20%),
+    linear-gradient(135deg, #ffe6ee 0%, #efbfd0 42%, #d68ca8 70%, #ab5f7c 100%);
+}
+
+.sakura-clay-pod.tone-deep {
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255, 236, 242, 0.88) 0 11%, transparent 12%),
+    radial-gradient(circle at 68% 34%, rgba(247, 212, 225, 0.84) 0 10%, transparent 12%),
+    radial-gradient(circle at 52% 70%, rgba(228, 153, 178, 0.82) 0 18%, transparent 20%),
+    linear-gradient(135deg, #ffdce7 0%, #e8a7be 42%, #ca7593 70%, #8e4864 100%);
+}
+
+.sakura-clay-canopy-petal,
+.sakura-clay-fall-petal {
+  position: absolute;
+  border-radius: 72% 72% 72% 12%;
+  background: linear-gradient(180deg, #fff0f4 0%, #f3bfd0 60%, #d785a1 100%);
+  box-shadow: 0 10px 18px rgba(171, 96, 119, 0.2);
+}
+
+.sakura-clay-canopy-petal {
+  transform-style: preserve-3d;
+}
+
+.sakura-clay-fall-petal {
+  width: 16px;
+  height: 22px;
+  transform-style: preserve-3d;
+}
+
+.sakura-clay-canopy-petal::after,
+.sakura-clay-fall-petal::after {
+  content: "";
+  position: absolute;
+  inset: 16% 16% auto auto;
+  width: 34%;
+  height: 34%;
+  border-radius: 999px;
+  background: rgba(255, 248, 250, 0.82);
+}
+
+.sakura-parallax-lines {
+  background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.22) 47%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(
+      152deg,
+      rgba(241, 186, 202, 0.12) 0%,
+      rgba(241, 186, 202, 0) 74%
+    );
+  mask-image: radial-gradient(circle at 76% 30%, black 0%, transparent 74%);
+  animation: sakura-line-drift 20s linear infinite;
+  opacity: 0.35;
+}
+
+.sakura-tree-layer {
+  transform-style: preserve-3d;
+  opacity: 0.74;
+  will-change: transform;
+}
+
+.sakura-aura {
+  background: radial-gradient(circle at 34% 34%, rgba(243, 190, 205, 0.42), rgba(243, 190, 205, 0.12) 54%, transparent 78%);
+  filter: blur(28px);
+  animation: sakura-aura-drift 8s ease-in-out infinite;
+}
+
+.sakura-tree-wrap {
+  transform-style: preserve-3d;
+  transform-origin: 42% 76%;
+  will-change: transform;
+}
+
+.sakura-volume-layer {
+  transform-style: preserve-3d;
+  transform: translateZ(-120px);
+}
+
+.sakura-volume-node {
+  position: absolute;
+  border-radius: 999px;
+  box-shadow: 0 14px 32px rgba(139, 74, 96, 0.18);
+  background: radial-gradient(circle at 32% 28%, rgba(255, 240, 246, 0.9), rgba(242, 185, 204, 0.56) 52%, rgba(211, 132, 156, 0.28) 100%);
+  animation: volume-drift 10s ease-in-out infinite;
+}
+
+.sakura-volume-node.is-mid {
+  background: radial-gradient(circle at 34% 30%, rgba(255, 242, 247, 0.88), rgba(236, 168, 191, 0.52) 54%, rgba(190, 108, 135, 0.3) 100%);
+}
+
+.sakura-volume-node.is-deep {
+  background: radial-gradient(circle at 38% 32%, rgba(248, 212, 226, 0.82), rgba(215, 133, 160, 0.5) 54%, rgba(146, 78, 105, 0.34) 100%);
+}
+
+.sakura-tree-svg {
+  overflow: visible;
+  filter: drop-shadow(0 30px 44px rgba(95, 56, 48, 0.2));
+  opacity: 0.84;
+  animation: sakura-breathe 8.2s ease-in-out infinite;
+}
+
+.sakura-trunk-main {
+  animation: branch-sheen 12s ease-in-out infinite;
+}
+
+.sakura-branch-main {
+  animation: branch-sheen 10s ease-in-out infinite reverse;
+}
+
+.sakura-bloom-core,
+.sakura-bloom-soft {
+  animation: bloom-float 9s ease-in-out infinite;
+}
+
+.sakura-bloom-soft {
+  animation-duration: 11s;
+}
+
+.sakura-bloom-speck {
+  fill: #ffe9f0;
+  animation: speck-twinkle 6.8s ease-in-out infinite;
+}
+
+.sakura-ground-shadow {
+  fill: rgba(62, 37, 33, 0.26);
+  animation: ground-breathe 7s ease-in-out infinite;
+}
+
+.sakura-fall-petal {
+  position: absolute;
+  width: 17px;
+  height: 23px;
+  border-radius: 72% 72% 72% 12%;
+  background: var(--landing-petal);
+  box-shadow: 0 12px 20px rgba(171, 96, 119, 0.2);
+  transform-style: preserve-3d;
+}
+
+.sakura-fall-petal::after {
+  content: "";
+  position: absolute;
+  inset: 18% 18% auto auto;
+  width: 34%;
+  height: 34%;
+  border-radius: 999px;
+  background: rgba(255, 247, 250, 0.78);
+}
+
+.background-tree-haze {
+  background: radial-gradient(circle, rgba(243, 189, 203, 0.38), rgba(243, 189, 203, 0.16) 44%, transparent 74%);
+  filter: blur(28px);
+}
+
+.botanical-tree-svg {
+  overflow: visible;
+  filter: drop-shadow(0 34px 48px rgba(88, 54, 45, 0.16));
+  opacity: 0.92;
+}
+
+.botanical-tree-form {
+  transform-origin: 46% 72%;
+  animation: botanical-sway 9s ease-in-out infinite;
+}
+
+.botanical-shadow {
+  animation: botanical-shadow 8s ease-in-out infinite;
+}
+
+.tree-assembly {
+  transform-style: preserve-3d;
+  transform-origin: 40% 68%;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.tree-trunk-fill {
+  filter: drop-shadow(0 10px 18px rgba(65, 40, 34, 0.18));
+}
+
+.tree-root-fill {
+  opacity: 0.92;
+}
+
+.tree-branch-line {
+  opacity: 0.94;
+}
+
+.tree-shadow-disk {
+  background: radial-gradient(circle, rgba(74, 47, 41, 0.34), rgba(74, 47, 41, 0.08) 58%, transparent 76%);
+  filter: blur(16px);
+  transform: translateZ(-130px);
+  animation: shadow-breathe 7.5s ease-in-out infinite;
+}
+
+.tree-canopy-shell {
+  background: radial-gradient(circle at 36% 34%, rgba(244, 196, 207, 0.96), rgba(222, 136, 160, 0.9) 52%, rgba(171, 89, 116, 0.82) 100%);
+  box-shadow: inset 0 0 90px rgba(255, 255, 255, 0.14),
+    0 24px 46px rgba(168, 102, 126, 0.18);
+  filter: saturate(1.04);
+}
+
+.tree-trunk-shell {
+  background: linear-gradient(180deg, #8a665a 0%, #6b4a3e 48%, #3d2925 100%);
+  box-shadow: 0 18px 40px rgba(55, 33, 28, 0.18);
+}
+
+.tree-trunk-sculpture {
+  transform-style: preserve-3d;
+}
+
+.tree-trunk-core {
+  background: linear-gradient(180deg, #8d695b 0%, #6d4c40 48%, #3b2723 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 54px rgba(55, 33, 28, 0.22);
+}
+
+.tree-root-arm {
+  background: linear-gradient(90deg, #5d4038, #835f51);
+  box-shadow: 0 10px 20px rgba(52, 31, 27, 0.18);
+  transform-origin: left center;
+}
+
+.tree-branch-arm {
+  background: linear-gradient(90deg, var(--landing-branch), var(--landing-branch-alt));
+  box-shadow: 0 16px 30px rgba(65, 43, 35, 0.18);
+  transform-origin: left center;
+  animation: branch-sheen 9s ease-in-out infinite;
+}
+
+.tree-cloud {
+  background: var(--landing-canopy);
+  box-shadow: inset 0 0 90px rgba(255, 255, 255, 0.1),
+    0 36px 70px rgba(133, 70, 90, 0.14);
+  transform-style: preserve-3d;
+  animation-name: cloud-glow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.tree-cloud::before,
+.tree-cloud::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  background: inherit;
+  opacity: 0.8;
+}
+
+.tree-cloud::before {
+  inset: 6% 18% auto auto;
+  width: 42%;
+  height: 40%;
+  filter: blur(8px);
+}
+
+.tree-cloud::after {
+  inset: auto auto 10% 8%;
+  width: 36%;
+  height: 34%;
+  filter: blur(10px);
+}
+
+.stage-blossom,
+.ground-petal {
+  position: absolute;
+  width: 18px;
+  height: 24px;
+  border-radius: 70% 70% 70% 12%;
+  background: var(--landing-petal);
+  box-shadow: 0 12px 20px rgba(181, 104, 127, 0.2);
+}
+
+.stage-blossom::after,
+.ground-petal::after {
+  content: "";
+  position: absolute;
+  inset: 18% 18% auto auto;
+  width: 34%;
+  height: 34%;
+  border-radius: 999px;
+  background: rgba(255, 247, 250, 0.82);
+}
+
+.orbit-artifact {
+  width: 11rem;
+  transform-style: preserve-3d;
+  animation: artifact-bob 8s ease-in-out infinite;
+}
+
+.artifact-glow {
+  background: radial-gradient(circle, color-mix(in srgb, var(--landing-accent) 55%, white), transparent 72%);
+  filter: blur(22px);
+  opacity: 0.48;
+  animation: glow-drift 8s ease-in-out infinite;
+}
+
+.artifact-card {
+  box-shadow: 0 18px 48px rgba(69, 43, 37, 0.12);
+}
+
+.float-shard {
+  width: 72px;
+  height: 16px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--landing-panel-border) 70%, transparent);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
+  opacity: 0.5;
+  animation: shard-drift 12s ease-in-out infinite;
+}
+
+.orbital-ring {
+  border-color: color-mix(in srgb, var(--landing-accent) 38%, var(--landing-panel-border));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 22px rgba(237, 172, 192, 0.18);
+  animation: ring-rotate 14s ease-in-out infinite;
+}
+
+.control-monolith {
+  backdrop-filter: blur(16px);
+  transform-style: preserve-3d;
+}
+
+.monolith-beam {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.26) 48%, transparent 100%);
+  transform: skewX(-18deg);
+  animation: monolith-scan 5.2s ease-in-out infinite;
 }
 
 .tree-canopy {
@@ -415,6 +1200,253 @@ body {
   }
 }
 
+@keyframes stage-glow {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(0.96);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+    opacity: 0.96;
+  }
+}
+
+@keyframes floor-glimmer {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: translateX(-50%) scaleX(0.96);
+  }
+  50% {
+    opacity: 0.68;
+    transform: translateX(-50%) scaleX(1.06);
+  }
+}
+
+@keyframes aura-sway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(16px, -10px, 0) scale(1.06);
+  }
+}
+
+@keyframes sakura-line-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-24px, 16px, 0);
+  }
+  100% {
+    transform: translate3d(-48px, 32px, 0);
+  }
+}
+
+@keyframes sakura-aura-drift {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.58;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.86;
+  }
+}
+
+@keyframes sakura-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.012);
+  }
+}
+
+@keyframes blossom-clay-float {
+  0%,
+  100% {
+    filter: saturate(1) brightness(1);
+  }
+  50% {
+    filter: saturate(1.05) brightness(1.04);
+  }
+}
+
+@keyframes volume-drift {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: translateY(-6px) scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes bloom-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.03);
+  }
+}
+
+@keyframes speck-twinkle {
+  0%,
+  100% {
+    opacity: 0.36;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes ground-breathe {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes botanical-sway {
+  0%,
+  100% {
+    transform: rotate(-1.2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(1.4deg) translateY(-4px);
+  }
+}
+
+@keyframes botanical-shadow {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.28;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes shadow-breathe {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: translateZ(-130px) scale(0.92);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateZ(-130px) scale(1.04);
+  }
+}
+
+@keyframes cloud-glow {
+  0%,
+  100% {
+    box-shadow: inset 0 0 90px rgba(255, 255, 255, 0.1),
+      0 36px 70px rgba(133, 70, 90, 0.14);
+    opacity: 0.92;
+  }
+  50% {
+    box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.14),
+      0 42px 82px rgba(133, 70, 90, 0.2);
+    opacity: 1;
+  }
+}
+
+@keyframes branch-sheen {
+  0%,
+  100% {
+    box-shadow: 0 16px 30px rgba(65, 43, 35, 0.18);
+  }
+  50% {
+    box-shadow: 0 22px 38px rgba(65, 43, 35, 0.26);
+  }
+}
+
+@keyframes artifact-bob {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes glow-drift {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.36;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.58;
+  }
+}
+
+@keyframes shard-drift {
+  0%,
+  100% {
+    opacity: 0.34;
+  }
+  50% {
+    opacity: 0.68;
+  }
+}
+
+@keyframes ring-rotate {
+  0% {
+    opacity: 0.24;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
+      0 0 18px rgba(237, 172, 192, 0.16);
+  }
+  50% {
+    opacity: 0.44;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 0 30px rgba(237, 172, 192, 0.24);
+  }
+  100% {
+    opacity: 0.24;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
+      0 0 18px rgba(237, 172, 192, 0.16);
+  }
+}
+
+@keyframes monolith-scan {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  16% {
+    opacity: 0.94;
+  }
+  54% {
+    opacity: 0.42;
+  }
+  100% {
+    transform: translateX(340%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
 @keyframes soft-rise {
   0% {
     opacity: 0;
@@ -561,6 +1593,55 @@ body {
 }
 
 @media (max-width: 768px) {
+  .scene-perspective {
+    perspective: 1240px;
+  }
+
+  .sakura-clay-layer {
+    right: -34vw;
+    top: 14vh;
+    width: 96vw;
+    min-width: 18rem;
+    opacity: 0.7;
+  }
+
+  .sakura-clay-tree {
+    inset: 6% 2% 0 -6%;
+  }
+
+  .sakura-clay-canopy {
+    inset: 2% -4% 22% -8%;
+  }
+
+  .sakura-clay-light {
+    right: 12%;
+    width: 54%;
+  }
+
+  .sakura-tree-layer {
+    right: -28vw;
+    top: 16vh;
+    width: 90vw;
+    min-width: 18rem;
+    opacity: 0.5;
+  }
+
+  .sakura-tree-wrap {
+    inset-inline: 6%;
+  }
+
+  .sakura-parallax-lines {
+    mask-image: radial-gradient(circle at 72% 34%, black 0%, transparent 80%);
+  }
+
+  .orbit-artifact {
+    width: 8.5rem;
+  }
+
+  .float-shard {
+    display: none;
+  }
+
   .sakura-canopy {
     width: 18rem;
     height: 12rem;

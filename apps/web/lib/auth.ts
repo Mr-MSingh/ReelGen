@@ -1,9 +1,62 @@
 import type { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "@reelgen/db";
+import { signInSchema } from "@/lib/auth-schemas";
+import { verifyPassword } from "@/lib/password";
+import { ensureWorkspaceForUser } from "@/lib/workspace-provisioning";
 
 const providers = [] as NextAuthOptions["providers"];
+
+providers.push(
+  CredentialsProvider({
+    name: "Credentials",
+    credentials: {
+      email: { label: "Email", type: "email" },
+      password: { label: "Password", type: "password" },
+    },
+    async authorize(credentials) {
+      const parsed = signInSchema.safeParse(credentials);
+
+      if (!parsed.success) {
+        return null;
+      }
+
+      const email = parsed.data.email.toLowerCase();
+      const user = await prisma.user.findUnique({
+        where: { email },
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          image: true,
+          passwordHash: true,
+        },
+      });
+
+      if (!user?.passwordHash) {
+        return null;
+      }
+
+      const isValidPassword = await verifyPassword(
+        parsed.data.password,
+        user.passwordHash
+      );
+
+      if (!isValidPassword) {
+        return null;
+      }
+
+      return {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        image: user.image,
+      };
+    },
+  })
+);
 
 if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
   providers.push(
@@ -18,67 +71,55 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers,
   session: {
-    strategy: "database",
+    strategy: "jwt",
   },
   secret: process.env.AUTH_SECRET,
   callbacks: {
-    async session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id;
+    async jwt({ token, user }) {
+      const userId = user?.id ?? token.id ?? token.sub;
+
+      if (!userId) {
+        return token;
+      }
+
+      token.id = userId;
+
+      if (!token.workspaceId) {
         const workspace = await prisma.workspace.findFirst({
-          where: { ownerUserId: user.id },
+          where: { ownerUserId: userId },
           select: { id: true },
         });
+
         if (workspace) {
-          session.user.workspaceId = workspace.id;
+          token.workspaceId = workspace.id;
         }
       }
+
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id ?? token.sub ?? "";
+        session.user.workspaceId = token.workspaceId;
+        session.user.name = session.user.name ?? token.name;
+        session.user.email = session.user.email ?? token.email;
+        session.user.image =
+          session.user.image ?? (typeof token.picture === "string" ? token.picture : null);
+      }
+
       return session;
     },
   },
   events: {
     async createUser({ user }) {
-      const existing = await prisma.workspace.findFirst({
-        where: { ownerUserId: user.id },
-      });
-      if (existing) {
+      if (!user.email) {
         return;
       }
 
-      const baseName = user.name ?? user.email?.split("@")[0] ?? "Workspace";
-      const plan = {
-        status: "trial",
-        planCode: "free",
-        monthlyVideoLimit: 5,
-        monthlyCreditsIncluded: 50,
-      };
-
-      const workspace = await prisma.workspace.create({
-        data: {
-          ownerUserId: user.id,
-          name: `${baseName} Workspace`,
-          timezone: "UTC",
-          defaultLanguage: "en",
-          planId: "free",
-          subscription: {
-            create: {
-              status: plan.status,
-              planCode: plan.planCode,
-              monthlyVideoLimit: plan.monthlyVideoLimit,
-              monthlyCreditsIncluded: plan.monthlyCreditsIncluded,
-            },
-          },
-        },
-      });
-
-      await prisma.creditLedger.create({
-        data: {
-          workspaceId: workspace.id,
-          type: "monthly",
-          delta: plan.monthlyCreditsIncluded,
-          balanceAfter: plan.monthlyCreditsIncluded,
-          reason: "Initial credit grant",
-        },
+      await ensureWorkspaceForUser({
+        userId: user.id,
+        email: user.email,
+        name: user.name,
       });
     },
   },
